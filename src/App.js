@@ -2,6 +2,8 @@
 import React, { useState, useEffect } from 'react';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
+import { TouchBackend } from 'react-dnd-touch-backend';
+import { isMobile } from 'react-device-detect';
 import Column from './components/Column';
 import axios from 'axios';
 
@@ -18,9 +20,9 @@ const App = () => {
   }, []);
 
   return (
-    <DndProvider backend={HTML5Backend}>
+    <DndProvider backend={isMobile ? TouchBackend : HTML5Backend}>
       <div style={{ display: 'flex', justifyContent: 'space-around' }}>
-        <Column status="pending" tasks={tasks} setTasks={setTasks} />
+        <Column status="todo" tasks={tasks} setTasks={setTasks} />
         <Column status="ongoing" tasks={tasks} setTasks={setTasks} />
         <Column status="completed" tasks={tasks} setTasks={setTasks} />
       </div>
