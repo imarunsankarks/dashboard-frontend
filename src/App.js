@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+// App.js
+import React, { useState, useEffect } from 'react';
+import { DndProvider } from 'react-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend';
+import Column from './components/Column';
+import axios from 'axios';
 
-function App() {
+const App = () => {
+  const [tasks, setTasks] = useState([]);
+
+  useEffect(() => {
+    const fetchTasks = async () => {
+      const response = await axios.get('http://localhost:4000/api/routes');
+      setTasks(response.data);
+    };
+
+    fetchTasks();
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <DndProvider backend={HTML5Backend}>
+      <div style={{ display: 'flex', justifyContent: 'space-around' }}>
+        <Column status="pending" tasks={tasks} setTasks={setTasks} />
+        <Column status="ongoing" tasks={tasks} setTasks={setTasks} />
+        <Column status="completed" tasks={tasks} setTasks={setTasks} />
+      </div>
+    </DndProvider>
   );
-}
+};
 
 export default App;
