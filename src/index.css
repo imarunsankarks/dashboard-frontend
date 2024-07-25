@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+:root {
+    --theme-blue: #0d335d;
+    --theme-sblue: #18bcf3;
+    --border-rad: 15px;
+}
+*{
+    box-sizing: border-box;
+    font-family: "DM Sans", sans-serif;
+}
+button:hover{
+    cursor: pointer;
+}
+body{
+    margin: 0;
+}
+h1{
+    font-size: 3rem;
+}
+h2{
+    font-size: 2.5rem;
+}
+p{
+    font-size: 1.5rem;
+}
+
+.app{
+    display: flex;
+    gap: 50px;
+    height: 100vh;
+}
+.pages{
+    width: 70%;
+}
+
+.navbar{
+    background: linear-gradient(245deg, var(--theme-blue),var(--theme-sblue));
+    color: #ffffff;
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 70px;
+}
+
+.navbar .logo img{
+    width: 100%;
+    filter: grayscale(1) brightness(100);
+}
+.nav-links a{
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.home, .add{
+    padding: 70px 30px;
+}
+.all-employees{
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+.each-employee{
+    width: 400px;
+    padding: 20px;
+    background: rgba(40, 122, 178, 0.08);
+    border-radius: 20px;
+    border: 1px solid rgba(13, 51, 93, 0.22) ;
+}
+.each-employee p {
+    margin: 0;
+    margin-bottom: 30px;
+    font-weight: 600;
+    font-size: 30px;
+}
+.each-employee button{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 0;
+    outline: 0;
+    background: transparent;
+}
+
+.all-tasks-container .sub-head, .add .sub-head{
+    border-bottom: 1px solid black;
+    padding: 10px;
+    font-weight: 600;
+}
+
+.all-tasks-container .task{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.all-tasks-container .task .status{
+    padding: 5px 15px;
+    border-radius: 20px;
+    text-transform: capitalize;
+    font-weight: 600;
+    color: #ffffff;
+    width: 150px;
+    text-align: center;
+}
+
+.all-tasks-container .task .description {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 400px;
+}
+
+/* add task */
+.add form{
+    display: flex;
+    gap: 30px;
+    flex-direction: column;
+}
+
+.add form .each-field{
+    display: flex;
+    justify-content: space-between;
+    gap: 100px;
+}
+.add form .each-field input, .add form .each-field select, .add form .each-field textarea{
+    width: 50vw;
+    border: 0;
+    outline: 0;
+    background: #ebebeb;
+    padding: 15px;
+    border-radius: 10px;
+}
