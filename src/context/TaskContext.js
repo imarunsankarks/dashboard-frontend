@@ -21,7 +21,8 @@ const tasksReducer = (state, action) => {
       };
     case 'REMOVE_TASK':
       return {
-        tasks: state.tasks.filter(task => task.id !== action.payload),
+        ...state,
+        tasks: state.tasks.filter(task => task._id !== action.payload),
       };
     default:
       return state;

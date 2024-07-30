@@ -1,5 +1,7 @@
 import { useState, useContext } from "react";
 import { TasksContext } from "../context/TaskContext";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
 const Add = () => {
   const { dispatch } = useContext(TasksContext);
@@ -18,7 +20,7 @@ const Add = () => {
         description,
         employee,
         status,
-        recurrence:recur,
+        recurrence: recur,
         deadline,
       };
       const addedTask = await axios.post(
@@ -54,15 +56,22 @@ const Add = () => {
         <div className="each-field">
           <label>Description</label>
           <textarea
-          rows={5}
-          column={15}
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
+            rows={5}
+            column={15}
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
           ></textarea>
         </div>
         <div className="each-field">
           <label>Assigned to</label>
-          <select name="" id="" onChange={(e)=>{setEmployee(e.target.value)}} value={employee}>
+          <select
+            name=""
+            className="form-select"
+            onChange={(e) => {
+              setEmployee(e.target.value);
+            }}
+            value={employee}
+          >
             <option value="Satish">Satish</option>
             <option value="Navya">Navya</option>
             <option value="Arun">Arun</option>
@@ -70,17 +79,31 @@ const Add = () => {
         </div>
         <div className="each-field">
           <label>Recurrence</label>
-          <select name="" id="" onChange={(e)=>{setRecur(e.target.value)}} value={recur}>
+          <select
+            name=""
+            className="form-select"
+            onChange={(e) => {
+              setRecur(e.target.value);
+            }}
+            value={recur}
+          >
             <option value="none">None</option>
             <option value="daily">Daily</option>
             <option value="weekly">Weekly</option>
             <option value="monthly">Monthly</option>
           </select>
         </div>
-       <div className="add-btn">
-        <button>Add Task</button>
-
-       </div>
+        <div className="each-field">
+          <label>Deadline</label>
+          <DatePicker
+            selected={deadline}
+            onChange={(date) => setDeadline(date)}
+            dateFormat="dd/MM/yyyy"
+          />
+        </div>
+        <div className="add-btn">
+          <button>Assign the task</button>
+        </div>
       </form>
     </div>
   );

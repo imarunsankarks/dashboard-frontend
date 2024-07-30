@@ -1,40 +1,48 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+
 :root {
     --theme-blue: #0d335d;
     --theme-sblue: #18bcf3;
     --border-rad: 15px;
 }
-*{
+
+* {
     box-sizing: border-box;
     font-family: "DM Sans", sans-serif;
 }
-button:hover{
+
+button:hover {
     cursor: pointer;
 }
-body{
+
+body {
     margin: 0;
 }
-h1{
+
+h1 {
     font-size: 3rem;
 }
-h2{
+
+h2 {
     font-size: 2.5rem;
 }
-p{
+
+p {
     font-size: 1.5rem;
 }
 
-.app{
+.app {
     display: flex;
     gap: 50px;
     height: 100vh;
 }
-.pages{
+
+.pages {
     width: 70%;
 }
 
-.navbar{
-    background: linear-gradient(245deg, var(--theme-blue),var(--theme-sblue));
+.navbar {
+    background: linear-gradient(245deg, var(--theme-blue), var(--theme-sblue));
     color: #ffffff;
     width: 20%;
     display: flex;
@@ -43,37 +51,42 @@ p{
     padding: 70px;
 }
 
-.navbar .logo img{
+.navbar .logo img {
     width: 100%;
     filter: grayscale(1) brightness(100);
 }
-.nav-links a{
+
+.nav-links a {
     text-decoration: none;
     color: #ffffff;
 }
 
-.home, .add{
+.home, .add {
     padding: 70px 30px;
 }
-.all-employees{
+
+.all-employees {
     display: flex;
     gap: 30px;
     flex-wrap: wrap;
 }
-.each-employee{
+
+.each-employee {
     width: 400px;
     padding: 20px;
     background: rgba(40, 122, 178, 0.08);
     border-radius: 20px;
-    border: 1px solid rgba(13, 51, 93, 0.22) ;
+    border: 1px solid rgba(13, 51, 93, 0.22);
 }
+
 .each-employee p {
     margin: 0;
     margin-bottom: 30px;
     font-weight: 600;
     font-size: 30px;
 }
-.each-employee button{
+
+.each-employee button {
     display: flex;
     align-items: center;
     gap: 10px;
@@ -82,19 +95,22 @@ p{
     background: transparent;
 }
 
-.all-tasks-container .sub-head, .add .sub-head{
-    border-bottom: 1px solid black;
-    padding: 10px;
+.all-tasks-container .sub-head, .add .sub-head {
+    border-bottom: 1px solid rgb(133, 133, 133);
+    padding: 10px 0;
     font-weight: 600;
 }
 
-.all-tasks-container .task{
+.all-tasks-container .task {
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
+.all-tasks-container .task h3{
+    width: 200px;
+}
 
-.all-tasks-container .task .status{
+.all-tasks-container .task .status {
     padding: 5px 15px;
     border-radius: 20px;
     text-transform: capitalize;
@@ -104,6 +120,10 @@ p{
     text-align: center;
 }
 
+.all-tasks-container .task .full-description {
+    width: 400px;
+}
+
 .all-tasks-container .task .description {
     display: -webkit-box;
     -webkit-line-clamp: 1;
@@ -111,25 +131,56 @@ p{
     overflow: hidden;
     text-overflow: ellipsis;
     max-width: 400px;
+    color: rgb(146, 146, 146);
+}
+
+.all-tasks-container .edit{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+}
+.all-tasks-container .edit svg{
+    font-size: 16px;
 }
 
 /* add task */
-.add form{
+.add form {
     display: flex;
     gap: 30px;
     flex-direction: column;
 }
 
-.add form .each-field{
+.add form .each-field {
     display: flex;
     justify-content: space-between;
     gap: 100px;
 }
-.add form .each-field input, .add form .each-field select, .add form .each-field textarea{
+
+.add form .each-field input, .add form .each-field select, .add form .each-field textarea {
     width: 50vw;
     border: 0;
     outline: 0;
     background: #ebebeb;
     padding: 15px;
     border-radius: 10px;
+}
+
+.add-btn {
+    margin-top: 30px;
+    text-align: end;
+}
+
+.add-btn button {
+    border: 0;
+    outline: 0;
+    padding: 7px 30px;
+    border-radius: 20px;
+    background: linear-gradient(75deg, var(--theme-blue), var(--theme-sblue));
+    color: #ffffff;
+    font-size: 1.2rem;
+}
+
+.react-datepicker__tab-loop {
+    position: absolute;
 }

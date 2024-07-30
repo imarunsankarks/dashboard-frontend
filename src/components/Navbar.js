@@ -13,7 +13,7 @@ const Navbar = () => {
         <p>
           <Link to="/add">Add Task</Link>
         </p>
-        <p>Contact</p>
+        <p>Add member</p>
       </div>
       <div className="logout">
         <p>Logout</p>
