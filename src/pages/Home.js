@@ -17,6 +17,7 @@ const Home = () => {
     };
 
     fetchTasks();
+    
   }, [dispatch]);
   const [toggle, setToggle] = useState(true);
   const [name, setName] = useState("");
@@ -26,6 +27,7 @@ const Home = () => {
   };
   const names = tasks.map((task) => task.employee);
   const uniqueNames = [...new Set(names)];
+
   const handleDelete = async (id) => {
     try {
       await axios.delete(`http://localhost:4000/api/routes/${id}`);
@@ -35,6 +37,10 @@ const Home = () => {
       console.log(err);
     }
   };
+  const handleUpdate = (updatedtask)=>{
+    console.log(updatedtask._id);
+    dispatch({type:"EDIT_TASK",payload:updatedtask})
+  }
 
   return (
     <div className="home">
@@ -50,6 +56,7 @@ const Home = () => {
           name={name}
           handleToggle={handleToggle}
           handleDelete={handleDelete}
+          handleUpdate={handleUpdate}
         />
       )}
     </div>

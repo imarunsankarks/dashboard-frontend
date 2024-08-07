@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 const Navbar = () => {
   return (
-    <div className="navbar">
+    <div className="sidebar">
       <div className="logo">
         <img src="/images/resurgent.webp" alt="" />
       </div>

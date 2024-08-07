@@ -99,6 +99,7 @@ const Add = () => {
             selected={deadline}
             onChange={(date) => setDeadline(date)}
             dateFormat="dd/MM/yyyy"
+            minDate={new Date()}
           />
         </div>
         <div className="add-btn">

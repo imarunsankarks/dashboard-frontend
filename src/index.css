@@ -40,8 +40,11 @@ p {
 .pages {
     width: 70%;
 }
+.home h1{
+    margin-bottom: 25px;
+}
 
-.navbar {
+.sidebar {
     background: linear-gradient(245deg, var(--theme-blue), var(--theme-sblue));
     color: #ffffff;
     width: 20%;
@@ -51,7 +54,7 @@ p {
     padding: 70px;
 }
 
-.navbar .logo img {
+.sidebar .logo img {
     width: 100%;
     filter: grayscale(1) brightness(100);
 }
@@ -100,14 +103,21 @@ p {
     padding: 10px 0;
     font-weight: 600;
 }
+.all-tasks-container .sub-head{
+    text-transform: capitalize;
+}
 
 .all-tasks-container .task {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-bottom: 25px;
 }
-.all-tasks-container .task h3{
+
+.all-tasks-container .task p {
     width: 200px;
+    margin: 0;
+    font-weight: 600;
 }
 
 .all-tasks-container .task .status {
@@ -134,13 +144,14 @@ p {
     color: rgb(146, 146, 146);
 }
 
-.all-tasks-container .edit{
+.all-tasks-container .edit {
     display: flex;
     align-items: center;
     gap: 10px;
     font-size: 14px;
 }
-.all-tasks-container .edit svg{
+
+.all-tasks-container .edit svg {
     font-size: 16px;
 }
 
@@ -183,4 +194,112 @@ p {
 
 .react-datepicker__tab-loop {
     position: absolute;
+}
+
+.task-filter {
+    width: auto !important;
+}
+
+/* edit modal */
+.modal-body .update .each-label {
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+.modal-body .update .each-label input, .modal-body .update .each-label select, .modal-body .update .each-label .react-datepicker-wrapper, .modal-body .update textarea {
+    width: 100%;
+    border: 0;
+    outline: 0;
+    background: #ebebeb;
+    border-radius: 5px;
+    padding: 10px;
+}
+.modal-body .update .each-label .react-datepicker-wrapper{
+    padding: 0;
+}
+
+.modal-body .update .each-label label {
+    width: 30%;
+}
+
+.modal-body .update textarea {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.modal-body .update .buttons{
+    display: flex;
+    gap: 20px;
+    justify-content: flex-end;
+}
+
+.modal-body .update .buttons .close{
+    border: 0;
+    outline: 0;
+    background: transparent;
+    color: red;
+}
+.modal-body .update .buttons .update{
+    border: 0;
+    outline: 0;
+    background: transparent;
+    color: rgb(255, 255, 255);
+    background: linear-gradient(75deg, var(--theme-blue),var(--theme-sblue));
+    border-radius: 30px;
+    width: 100px;
+    text-align: center;
+}
+.all-tasks-container{
+    position: relative;
+}
+
+.back-home-btn{
+    border: 0;
+    outline: 0;
+    background: transparent;
+    margin: 20px 0;
+    padding: 0;
+    position: absolute;
+    right: 0;
+}
+.back-home-btn svg{
+    color: #ffffff;
+    background: linear-gradient(75deg, var(--theme-blue),var(--theme-sblue));
+    border-radius: 50%;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+.recur-filter{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.all-filters{
+    display: flex;
+    gap: 20px;
+}
+
+.all-filters input{
+    display: block;
+    padding: .375rem .75rem .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--bs-body-color);
+    appearance: none;
+    background-color: var(--bs-body-bg);
+    background-image: var(--bs-form-select-bg-img),var(--bs-form-select-bg-icon,none);
+    background-repeat: no-repeat;
+    background-position: right .75rem center;
+    background-size: 16px 12px;
+    border: var(--bs-border-width) solid var(--bs-border-color);
+    border-radius: var(--bs-border-radius);
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    margin: 20px 0;
 }
