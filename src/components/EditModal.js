@@ -12,6 +12,7 @@ const EditModal = ({ show, task, handleClose, handleUpdate }) => {
   const [formValues, setFormValues] = useState({
     title: "",
     description: "",
+    status: "",
     recurrence: "none",
     deadline: new Date(),
   });
@@ -21,6 +22,7 @@ const EditModal = ({ show, task, handleClose, handleUpdate }) => {
       setFormValues({
         title: task.title,
         description: task.description,
+        status: task.status,
         recurrence: task.recurrence,
         deadline: new Date(task.deadline),
       });
@@ -86,6 +88,20 @@ const EditModal = ({ show, task, handleClose, handleUpdate }) => {
               value={formValues.description}
               required
             ></textarea>
+          </div>
+          <div className="each-label">
+            <label>Status </label>
+            <select
+              name="status"
+              value={formValues.status}
+              onChange={handleChange}
+              className="form-select"
+            >
+              <option value="pending">Pending</option>
+              <option value="in progress">In progress</option>
+              <option value="completed">Completed</option>
+              <option value="incomplete">Incomplete</option>
+            </select>
           </div>
           {!task.recurrence.includes(" ") && (
             <>

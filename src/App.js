@@ -2,17 +2,25 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Add from "./pages/Add";
+import Signup from "./pages/Signup";
+import Login from "./pages/Login";
+import { useAuthContext } from "./hooks/useAuthContext";
 
 const App = () => {
+  const { user } = useAuthContext();
+  // console.log(user.role);
+
   return (
     <>
       <div className="app">
         <BrowserRouter>
-          <Navbar />
+          {user && <Navbar />}
           <div className="pages">
             <Routes>
-              <Route path="/add" element={<Add />} />
-              <Route path="/" element={<Home />} />
+              <Route path="/add" element={user ? <Add /> : <Navigate to="/login" />} />
+              <Route path="/signup" element={user ? <Navigate to="/" /> : <Signup />} />
+              <Route path="/login" element={user ? <Navigate to="/" /> : <Login />} />
+              <Route path="/" element={user ? <Home /> : <Navigate to="/login" />} />
               <Route path="*" element={<Navigate to="/" />} />
             </Routes>
           </div>

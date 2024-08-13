@@ -1,9 +1,10 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import EditRoundedIcon from "@mui/icons-material/EditRounded";
 import DeleteForeverRoundedIcon from "@mui/icons-material/DeleteForeverRounded";
 import ArrowBackRoundedIcon from "@mui/icons-material/ArrowBackRounded";
 import DeleteModal from "./DeleteModal";
 import EditModal from "./EditModal";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 const formatDate = (dateString) => {
   const date = new Date(dateString);
@@ -23,26 +24,29 @@ const AllTasks = ({
   handleDelete,
   handleUpdate,
 }) => {
+  const { user } = useAuthContext();
   const [show, setShow] = useState(false);
   const [showEdit, setShowEdit] = useState(false);
   const [filter, setFilter] = useState("recur");
-  const [filteredTasks,setFilteredTasks] = useState(tasks);
-  const [day,setDay] = useState('');
-  const [month,setMonth] = useState('');
-  const [del,setDel] = useState('');
+  const [filteredTasks, setFilteredTasks] = useState(tasks);
+  const [day, setDay] = useState('');
+  const [month, setMonth] = useState('');
+  const [del, setDel] = useState('');
   useEffect(() => {
     setFilteredTasks(tasks);
-}, [tasks]);
+  }, [tasks]);
 
   const handleClose = () => setShow(false);
-  const handleShow = (val) => {setShow(true)
+  const handleShow = (val) => {
+    setShow(true)
     setDel(val)
   };
 
   const handleCloseEdit = () => {
     setShowEdit(false);
   };
-  const handleShowEdit = (val) => {setShowEdit(true)
+  const handleShowEdit = (val) => {
+    setShowEdit(true)
     setDel(val)
   };
   return (
@@ -63,9 +67,14 @@ const AllTasks = ({
             value={filter}
           >
             <option value="recur">All</option>
-            <option value="daily">Daily</option>
-            <option value="weekly">Weekly</option>
-            <option value="monthly">Monthly</option>
+            {user.role === 'manager' &&
+              <>
+                <option value="daily">Daily</option>
+                <option value="weekly">Weekly</option>
+                <option value="monthly">Monthly</option>
+
+              </>
+            }
             <option value="none">Non-Scheduled</option>
           </select>
         </div>
@@ -73,14 +82,14 @@ const AllTasks = ({
           type="date"
           onChange={(e) => {
             setMonth('');
-            if(e.target.value){
-              setFilteredTasks(tasks.filter((task)=>(task.deadline.split('T')[0] === e.target.value)));
+            if (e.target.value) {
+              setFilteredTasks(tasks.filter((task) => (task.deadline.split('T')[0] === e.target.value)));
               setDay(e.target.value);
-            }else{
+            } else {
               setFilteredTasks(tasks);
               setDay('');
             }
-            
+
           }}
           id="day-filter"
           value={day}
@@ -89,31 +98,31 @@ const AllTasks = ({
           type="month"
           onChange={(e) => {
             setDay('');
-            if(e.target.value){
-              setFilteredTasks(tasks.filter((task)=>(task.deadline.split('T')[0].substring(0, 7) === e.target.value)));
+            if (e.target.value) {
+              setFilteredTasks(tasks.filter((task) => (task.deadline.split('T')[0].substring(0, 7) === e.target.value)));
               setMonth(e.target.value);
-            }else{
+            } else {
               setFilteredTasks(tasks);
               setMonth('')
             }
-            
+
           }}
           id="month-filter"
           value={month}
         />
         <input type="week"
-        onChange={(e)=>{
-          console.log(e.target.value);
-          
-        }}
-        id="weekInput" name="weekInput" />
+          onChange={(e) => {
+            console.log(e.target.value);
+
+          }}
+          id="weekInput" name="weekInput" />
       </div>
       <p className="sub-head">
         {filter === "none"
           ? "Non-Scheduled"
           : filter === "recur"
-          ? "All"
-          : filter}{" "}
+            ? "All"
+            : filter}{" "}
         Tasks
       </p>
       {filteredTasks
@@ -135,16 +144,16 @@ const AllTasks = ({
                   task.status === "pending"
                     ? "#18bcf3"
                     : task.status === "in progress"
-                    ? "Orange"
-                    : task.status === "completed"
-                    ? "Green"
-                    : "Red",
+                      ? "Orange"
+                      : task.status === "completed"
+                        ? "Green"
+                        : "Red",
               }}
             >
               {task.status}
             </span>
             <span className="date">{formatDate(task.deadline)}</span>
-            <span className="edit" onClick={()=>{handleShowEdit(task._id)}}>
+            <span className="edit" onClick={() => { handleShowEdit(task._id) }}>
               <EditRoundedIcon /> Edit
             </span>
             <EditModal
@@ -153,7 +162,7 @@ const AllTasks = ({
               handleClose={handleCloseEdit}
               handleUpdate={handleUpdate}
             />
-            <span onClick={()=>{handleShow(task._id)}}>
+            <span onClick={() => { handleShow(task._id) }}>
               <DeleteForeverRoundedIcon />
             </span>
             <DeleteModal

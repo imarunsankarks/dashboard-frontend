@@ -3,7 +3,10 @@ import axios from "axios";
 import { TasksContext } from "../context/TaskContext";
 import Dashboard from "../components/Dashboard";
 import AllTasks from "../components/AllTasks";
+import { useAuthContext } from "../hooks/useAuthContext";
+
 const Home = () => {
+  const { user } = useAuthContext();
   const { state, dispatch } = useContext(TasksContext);
   const { tasks } = state;
   useEffect(() => {
@@ -17,9 +20,9 @@ const Home = () => {
     };
 
     fetchTasks();
-    
+
   }, [dispatch]);
-  const [toggle, setToggle] = useState(true);
+  const [toggle, setToggle] = useState(user.role === 'manager' ? true : false);
   const [name, setName] = useState("");
   const handleToggle = (val = "") => {
     setToggle(!toggle);
@@ -37,15 +40,15 @@ const Home = () => {
       console.log(err);
     }
   };
-  const handleUpdate = (updatedtask)=>{
+  const handleUpdate = (updatedtask) => {
     console.log(updatedtask._id);
-    dispatch({type:"EDIT_TASK",payload:updatedtask})
+    dispatch({ type: "EDIT_TASK", payload: updatedtask })
   }
 
   return (
     <div className="home">
       <h1>
-        Hi <span>Manager</span>
+        Hi <span>{user.name}</span>
       </h1>
       {toggle && (
         <Dashboard uniqueNames={uniqueNames} handleToggle={handleToggle} />
@@ -53,7 +56,7 @@ const Home = () => {
       {!toggle && (
         <AllTasks
           tasks={tasks}
-          name={name}
+          name={name || user.name}
           handleToggle={handleToggle}
           handleDelete={handleDelete}
           handleUpdate={handleUpdate}

@@ -1,11 +1,20 @@
 import { Link } from "react-router-dom";
+import { useLogout } from '../hooks/useLogout';
+import LogoutIcon from '@mui/icons-material/Logout';
+import { useAuthContext } from "../hooks/useAuthContext";
+
 const Navbar = () => {
+  const { user } = useAuthContext();
+  const { logout } = useLogout()
+  const handleClick = () => {
+    logout();
+  }
   return (
     <div className="sidebar">
       <div className="logo">
         <img src="/images/resurgent.webp" alt="" />
       </div>
-      <div className="nav-links">
+      {user.role === 'manager' && <div className="nav-links">
         <p>
           <Link to="/">Home</Link>
         </p>
@@ -14,9 +23,9 @@ const Navbar = () => {
           <Link to="/add">Add Task</Link>
         </p>
         <p>Add member</p>
-      </div>
+      </div>}
       <div className="logout">
-        <p>Logout</p>
+        <p onClick={handleClick}><LogoutIcon /> Logout</p>
       </div>
     </div>
   );

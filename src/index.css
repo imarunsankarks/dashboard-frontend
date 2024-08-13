@@ -1,305 +1,351 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap");
 
 :root {
-    --theme-blue: #0d335d;
-    --theme-sblue: #18bcf3;
-    --border-rad: 15px;
+  --theme-blue: #0d335d;
+  --theme-sblue: #18bcf3;
+  --border-rad: 15px;
 }
 
 * {
-    box-sizing: border-box;
-    font-family: "DM Sans", sans-serif;
+  box-sizing: border-box;
+  font-family: "DM Sans", sans-serif;
 }
 
 button:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 body {
-    margin: 0;
+  margin: 0;
 }
 
 h1 {
-    font-size: 3rem;
+  font-size: 3rem;
 }
 
 h2 {
-    font-size: 2.5rem;
+  font-size: 2.5rem;
 }
 
 p {
-    font-size: 1.5rem;
+  font-size: 1.5rem;
 }
 
 .app {
-    display: flex;
-    gap: 50px;
-    height: 100vh;
+  display: flex;
+  gap: 50px;
+  height: 100vh;
 }
 
 .pages {
-    width: 70%;
+  width: 100%;
 }
-.home h1{
-    margin-bottom: 25px;
+.home h1 {
+  margin-bottom: 25px;
+  text-transform: capitalize;
 }
 
 .sidebar {
-    background: linear-gradient(245deg, var(--theme-blue), var(--theme-sblue));
-    color: #ffffff;
-    width: 20%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 70px;
+  background: linear-gradient(245deg, var(--theme-blue), var(--theme-sblue));
+  color: #ffffff;
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 70px;
 }
 
 .sidebar .logo img {
-    width: 100%;
-    filter: grayscale(1) brightness(100);
+  width: 100%;
+  filter: grayscale(1) brightness(100);
 }
 
 .nav-links a {
-    text-decoration: none;
-    color: #ffffff;
+  text-decoration: none;
+  color: #ffffff;
 }
 
-.home, .add {
-    padding: 70px 30px;
+.home,
+.add {
+  padding: 70px 30px;
 }
 
 .all-employees {
-    display: flex;
-    gap: 30px;
-    flex-wrap: wrap;
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
 }
 
 .each-employee {
-    width: 400px;
-    padding: 20px;
-    background: rgba(40, 122, 178, 0.08);
-    border-radius: 20px;
-    border: 1px solid rgba(13, 51, 93, 0.22);
+  width: 400px;
+  padding: 20px;
+  background: rgba(40, 122, 178, 0.08);
+  border-radius: 20px;
+  border: 1px solid rgba(13, 51, 93, 0.22);
 }
 
 .each-employee p {
-    margin: 0;
-    margin-bottom: 30px;
-    font-weight: 600;
-    font-size: 30px;
+  margin: 0;
+  margin-bottom: 30px;
+  font-weight: 600;
+  font-size: 30px;
 }
 
 .each-employee button {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    border: 0;
-    outline: 0;
-    background: transparent;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 0;
+  outline: 0;
+  background: transparent;
 }
 
-.all-tasks-container .sub-head, .add .sub-head {
-    border-bottom: 1px solid rgb(133, 133, 133);
-    padding: 10px 0;
-    font-weight: 600;
+.all-tasks-container .sub-head,
+.add .sub-head {
+  border-bottom: 1px solid rgb(133, 133, 133);
+  padding: 10px 0;
+  font-weight: 600;
 }
-.all-tasks-container .sub-head{
-    text-transform: capitalize;
+.all-tasks-container .sub-head {
+  text-transform: capitalize;
 }
 
 .all-tasks-container .task {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 25px;
 }
 
 .all-tasks-container .task p {
-    width: 200px;
-    margin: 0;
-    font-weight: 600;
+  width: 200px;
+  margin: 0;
+  font-weight: 600;
 }
 
 .all-tasks-container .task .status {
-    padding: 5px 15px;
-    border-radius: 20px;
-    text-transform: capitalize;
-    font-weight: 600;
-    color: #ffffff;
-    width: 150px;
-    text-align: center;
+  padding: 5px 15px;
+  border-radius: 20px;
+  text-transform: capitalize;
+  font-weight: 600;
+  color: #ffffff;
+  width: 150px;
+  text-align: center;
 }
 
 .all-tasks-container .task .full-description {
-    width: 400px;
+  width: 400px;
 }
 
 .all-tasks-container .task .description {
-    display: -webkit-box;
-    -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 400px;
-    color: rgb(146, 146, 146);
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 400px;
+  color: rgb(146, 146, 146);
 }
 
 .all-tasks-container .edit {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
 }
 
 .all-tasks-container .edit svg {
-    font-size: 16px;
+  font-size: 16px;
 }
 
 /* add task */
 .add form {
-    display: flex;
-    gap: 30px;
-    flex-direction: column;
+  display: flex;
+  gap: 30px;
+  flex-direction: column;
 }
 
 .add form .each-field {
-    display: flex;
-    justify-content: space-between;
-    gap: 100px;
+  display: flex;
+  justify-content: space-between;
+  gap: 100px;
 }
 
-.add form .each-field input, .add form .each-field select, .add form .each-field textarea {
-    width: 50vw;
-    border: 0;
-    outline: 0;
-    background: #ebebeb;
-    padding: 15px;
-    border-radius: 10px;
+.add form .each-field input,
+.add form .each-field select,
+.add form .each-field textarea {
+  width: 50vw;
+  border: 0;
+  outline: 0;
+  background: #ebebeb;
+  padding: 15px;
+  border-radius: 10px;
 }
 
 .add-btn {
-    margin-top: 30px;
-    text-align: end;
+  margin-top: 30px;
+  text-align: end;
 }
 
 .add-btn button {
-    border: 0;
-    outline: 0;
-    padding: 7px 30px;
-    border-radius: 20px;
-    background: linear-gradient(75deg, var(--theme-blue), var(--theme-sblue));
-    color: #ffffff;
-    font-size: 1.2rem;
+  border: 0;
+  outline: 0;
+  padding: 7px 30px;
+  border-radius: 20px;
+  background: linear-gradient(75deg, var(--theme-blue), var(--theme-sblue));
+  color: #ffffff;
+  font-size: 1.2rem;
 }
 
 .react-datepicker__tab-loop {
-    position: absolute;
+  position: absolute;
 }
 
 .task-filter {
-    width: auto !important;
+  width: auto !important;
 }
 
 /* edit modal */
 .modal-body .update .each-label {
-    display: flex;
-    justify-content: space-between;
-    gap: 50px;
-    margin-bottom: 20px;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  gap: 50px;
+  margin-bottom: 20px;
+  align-items: center;
 }
 
-.modal-body .update .each-label input, .modal-body .update .each-label select, .modal-body .update .each-label .react-datepicker-wrapper, .modal-body .update textarea {
-    width: 100%;
-    border: 0;
-    outline: 0;
-    background: #ebebeb;
-    border-radius: 5px;
-    padding: 10px;
+.modal-body .update .each-label input,
+.modal-body .update .each-label select,
+.modal-body .update .each-label .react-datepicker-wrapper,
+.modal-body .update textarea {
+  width: 100%;
+  border: 0;
+  outline: 0;
+  background: #ebebeb;
+  border-radius: 5px;
+  padding: 10px;
 }
-.modal-body .update .each-label .react-datepicker-wrapper{
-    padding: 0;
+.modal-body .update .each-label .react-datepicker-wrapper {
+  padding: 0;
 }
 
 .modal-body .update .each-label label {
-    width: 30%;
+  width: 30%;
 }
 
 .modal-body .update textarea {
-    width: 100%;
-    margin-bottom: 20px;
+  width: 100%;
+  margin-bottom: 20px;
 }
 
-.modal-body .update .buttons{
-    display: flex;
-    gap: 20px;
-    justify-content: flex-end;
+.modal-body .update .buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: flex-end;
 }
 
-.modal-body .update .buttons .close{
-    border: 0;
-    outline: 0;
-    background: transparent;
-    color: red;
+.modal-body .update .buttons .close {
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: red;
 }
-.modal-body .update .buttons .update{
-    border: 0;
-    outline: 0;
-    background: transparent;
-    color: rgb(255, 255, 255);
-    background: linear-gradient(75deg, var(--theme-blue),var(--theme-sblue));
-    border-radius: 30px;
-    width: 100px;
-    text-align: center;
+.modal-body .update .buttons .update {
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: rgb(255, 255, 255);
+  background: linear-gradient(75deg, var(--theme-blue), var(--theme-sblue));
+  border-radius: 30px;
+  width: 100px;
+  text-align: center;
 }
-.all-tasks-container{
-    position: relative;
-}
-
-.back-home-btn{
-    border: 0;
-    outline: 0;
-    background: transparent;
-    margin: 20px 0;
-    padding: 0;
-    position: absolute;
-    right: 0;
-}
-.back-home-btn svg{
-    color: #ffffff;
-    background: linear-gradient(75deg, var(--theme-blue),var(--theme-sblue));
-    border-radius: 50%;
-    padding: 5px;
-    box-sizing: border-box;
+.all-tasks-container {
+  position: relative;
 }
 
-.recur-filter{
-    display: flex;
-    gap: 20px;
-    align-items: center;
-    margin: 20px 0;
+.back-home-btn {
+  border: 0;
+  outline: 0;
+  background: transparent;
+  margin: 20px 0;
+  padding: 0;
+  position: absolute;
+  right: 0;
+}
+.back-home-btn svg {
+  color: #ffffff;
+  background: linear-gradient(75deg, var(--theme-blue), var(--theme-sblue));
+  border-radius: 50%;
+  padding: 5px;
+  box-sizing: border-box;
 }
 
-.all-filters{
-    display: flex;
-    gap: 20px;
+.recur-filter {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  margin: 20px 0;
 }
 
-.all-filters input{
-    display: block;
-    padding: .375rem .75rem .375rem .75rem;
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.5;
-    color: var(--bs-body-color);
-    appearance: none;
-    background-color: var(--bs-body-bg);
-    background-image: var(--bs-form-select-bg-img),var(--bs-form-select-bg-icon,none);
-    background-repeat: no-repeat;
-    background-position: right .75rem center;
-    background-size: 16px 12px;
-    border: var(--bs-border-width) solid var(--bs-border-color);
-    border-radius: var(--bs-border-radius);
-    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-    margin: 20px 0;
+.all-filters {
+  display: flex;
+  gap: 20px;
+}
+
+.all-filters input {
+  display: block;
+  padding: 0.375rem 0.75rem 0.375rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--bs-body-color);
+  appearance: none;
+  background-color: var(--bs-body-bg);
+  background-image: var(--bs-form-select-bg-img),
+    var(--bs-form-select-bg-icon, none);
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 16px 12px;
+  border: var(--bs-border-width) solid var(--bs-border-color);
+  border-radius: var(--bs-border-radius);
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  margin: 20px 0;
+}
+
+.login-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  background: linear-gradient(45deg, var(--theme-blue), var(--theme-sblue));
+}
+.login {
+  display: flex;
+  flex-direction: column;
+  padding: 40px;
+  border-radius: 15px;
+  background: #ffffff;
+}
+.login input {
+  width: 500px;
+  margin-bottom: 15px;
+  padding: 12px;
+  border: 0;
+  border-radius: 7px;
+  background: #ebebeb;
+}
+.login button {
+  border: 0;
+  outline: 0;
+  padding: 7px 30px;
+  border-radius: 20px;
+  background: linear-gradient(75deg, var(--theme-blue), var(--theme-sblue));
+  color: #ffffff;
+  font-size: 1.2rem;
+  margin-top: 20px;
+}
+.logout {
+  cursor: pointer;
 }
