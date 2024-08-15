@@ -51,10 +51,10 @@ const AllTasks = ({
   };
   return (
     <div className="all-tasks-container">
-      <button className="back-home-btn" onClick={handleToggle}>
+      {user.role === 'manager' && <button className="back-home-btn" onClick={handleToggle}>
         <ArrowBackRoundedIcon /> Go back
-      </button>
-      <p>Here is the list of all the tasks assigned to {name}</p>
+      </button>}
+      <p>Here is the list of all the tasks assigned to {user.role === 'manager' ? name : 'you'}</p>
       <div className="all-filters">
         <div className="recur-filter">
           <span>Recurrence filter</span>
@@ -162,9 +162,9 @@ const AllTasks = ({
               handleClose={handleCloseEdit}
               handleUpdate={handleUpdate}
             />
-            <span onClick={() => { handleShow(task._id) }}>
+            {user.role === 'manager' && <span onClick={() => { handleShow(task._id) }}>
               <DeleteForeverRoundedIcon />
-            </span>
+            </span>}
             <DeleteModal
               show={del === task._id ? show : false}
               handleClose={handleClose}

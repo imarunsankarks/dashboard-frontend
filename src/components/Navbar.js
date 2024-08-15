@@ -22,7 +22,7 @@ const Navbar = () => {
         <p>
           <Link to="/add">Add Task</Link>
         </p>
-        <p>Add member</p>
+        <p><Link to="/new-member">Add Member</Link></p>
       </div>}
       <div className="logout">
         <p onClick={handleClick}><LogoutIcon /> Logout</p>

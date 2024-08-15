@@ -40,10 +40,7 @@ const Add = () => {
   };
   return (
     <div className="add">
-      <h1>
-        Hi <span>Manager</span>
-      </h1>
-      <p className="sub-head">Assign a new tasks</p>
+      <h3 className="sub-head">Assign a new tasks</h3>
       <form onSubmit={addTask}>
         <div className="each-field">
           <label>Task</label>

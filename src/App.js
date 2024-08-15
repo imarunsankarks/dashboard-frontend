@@ -17,8 +17,8 @@ const App = () => {
           {user && <Navbar />}
           <div className="pages">
             <Routes>
+              <Route path="/new-member" element={user ? <Signup /> : <Navigate to="/login" />} />
               <Route path="/add" element={user ? <Add /> : <Navigate to="/login" />} />
-              <Route path="/signup" element={user ? <Navigate to="/" /> : <Signup />} />
               <Route path="/login" element={user ? <Navigate to="/" /> : <Login />} />
               <Route path="/" element={user ? <Home /> : <Navigate to="/login" />} />
               <Route path="*" element={<Navigate to="/" />} />

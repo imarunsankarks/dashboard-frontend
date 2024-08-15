@@ -3,8 +3,10 @@ import { Modal, Button } from "react-bootstrap";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 const EditModal = ({ show, task, handleClose, handleUpdate }) => {
+  const { user } = useAuthContext();
   // const { state } = useContext(TasksContext);
   // const { tasks } = state;
   // const task = tasks.find((task) => task._id === taskId);
@@ -68,27 +70,59 @@ const EditModal = ({ show, task, handleClose, handleUpdate }) => {
       <Modal.Body>
         <h4 className="modal-header">Edit Task</h4>
         <form className="update" onSubmit={handleSubmit}>
-          <div className="each-label">
-            <label>Task</label>
-            <input
-              type="text"
-              name="title"
-              onChange={handleChange}
-              value={formValues.title}
-              required
-            />
-          </div>
-          <div className="">
-            <label>Description</label>
-            <textarea
-              rows="5"
-              cols="50"
-              name="description"
-              onChange={handleChange}
-              value={formValues.description}
-              required
-            ></textarea>
-          </div>
+          {user.role === 'manager' &&
+            <>
+              <div className="each-label">
+                <label>Task</label>
+                <input
+                  type="text"
+                  name="title"
+                  onChange={handleChange}
+                  value={formValues.title}
+                  required
+                />
+              </div>
+              <div className="">
+                <label>Description</label>
+                <textarea
+                  rows="5"
+                  cols="50"
+                  name="description"
+                  onChange={handleChange}
+                  value={formValues.description}
+                  required
+                ></textarea>
+              </div>
+
+              {!task.recurrence.includes(" ") && (
+                <>
+                  <div className="each-label">
+                    <label>Recurrence </label>
+                    <select
+                      name="recurrence"
+                      value={formValues.recurrence}
+                      onChange={handleChange}
+                      className="form-select"
+                    >
+                      <option value="none">None</option>
+                      <option value="daily">Daily</option>
+                      <option value="weekly">Weekly</option>
+                      <option value="monthly">Monthly</option>
+                    </select>
+                  </div>
+                  <div className="each-label">
+                    <label>Deadline </label>
+                    <DatePicker
+                      selected={formValues.deadline}
+                      onChange={handleDateChange}
+                      dateFormat="dd/MM/yyyy"
+                    />
+                  </div>
+                </>
+              )}
+
+            </>
+          }
           <div className="each-label">
             <label>Status </label>
             <select
@@ -103,32 +137,6 @@ const EditModal = ({ show, task, handleClose, handleUpdate }) => {
               <option value="incomplete">Incomplete</option>
             </select>
           </div>
-          {!task.recurrence.includes(" ") && (
-            <>
-              <div className="each-label">
-                <label>Recurrence </label>
-                <select
-                  name="recurrence"
-                  value={formValues.recurrence}
-                  onChange={handleChange}
-                  className="form-select"
-                >
-                  <option value="none">None</option>
-                  <option value="daily">Daily</option>
-                  <option value="weekly">Weekly</option>
-                  <option value="monthly">Monthly</option>
-                </select>
-              </div>
-              <div className="each-label">
-                <label>Deadline </label>
-                <DatePicker
-                  selected={formValues.deadline}
-                  onChange={handleDateChange}
-                  dateFormat="dd/MM/yyyy"
-                />
-              </div>
-            </>
-          )}
           <div className="buttons">
             <Button
               variant="secondary"
